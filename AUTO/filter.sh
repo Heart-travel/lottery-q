@@ -1,5 +1,8 @@
 #!/bin/sh
 
+DATABASE=../database
+OUTPUT=../temp/all_time.txt
+
 TARGET=0
 TAR_NUM=0
 
@@ -7,7 +10,7 @@ for i in `seq 0 999`
 do
 	TARGET=`printf "%03d" $i`
 	#echo $TARGET
-	TAR_NUM=`grep -nwr $TARGET ./new | wc -l`
+	TAR_NUM=`grep -nwr $TARGET $DATABASE | wc -l`
 	#echo TAR_NUM=$TAR_NUM
 	if [ $TAR_NUM -eq 0 ]; then
 		TAR_NUM=A
@@ -38,5 +41,5 @@ do
 	elif [ $TAR_NUM -gt 12 ]; then
 		TAR_NUM=Z
 	fi
-	echo $TARGET $TAR_NUM | tee -a new.txt
+	echo $TARGET $TAR_NUM | tee -a $OUTPUT
 done
