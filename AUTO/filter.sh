@@ -6,6 +6,8 @@ OUTPUT=../temp/all_time.txt
 TARGET=0
 TAR_NUM=0
 
+rm -rf $OUTPUT
+
 for i in `seq 0 999`
 do
 	TARGET=`printf "%03d" $i`
@@ -41,5 +43,6 @@ do
 	elif [ $TAR_NUM -gt 12 ]; then
 		TAR_NUM=Z
 	fi
-	echo $TARGET $TAR_NUM | tee -a $OUTPUT
+	#echo $TARGET $TAR_NUM | tee -a $OUTPUT
+	echo $TARGET $TAR_NUM >> $OUTPUT
 done

@@ -1,6 +1,7 @@
 #!/bin/bash 
 
 TEMP=../temp/3d.xml
+DEST=../temp/today.txt
 
 touch $TEMP
 curl http://f.apiplus.cn/fc3d.xml > $TEMP
@@ -10,5 +11,5 @@ curl http://f.apiplus.cn/fc3d.xml > $TEMP
 expect=`cat $TEMP | awk ' FS="><"{print $7}' | awk  -F\" '{print $2}'`
 opencode=`cat $TEMP | awk ' FS="><"{print $8}' | awk  -F\" '{print $2}' | awk -F\, '{print $1 $2 $3}'`
 
-echo $expect $opencode
+echo $expect\ \ \ $opencode > $DEST
 rm -r $TEMP
