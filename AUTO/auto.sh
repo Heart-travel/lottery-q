@@ -1,12 +1,13 @@
 #!/bin/bash 
 
+cd /home/zhaocg/source/lottery/AUTO/
 source catch.sh
 
 #cat ../temp/today.txt >> ../database/2015.txt
 YEAR=`tail -n 1 ../database/2015.txt | awk '{print $1}'`
 T_YEAR=`tail -n 1 ../temp/today.txt | awk '{print $1}'`
 T_RESULT=`tail -n 1 ../temp/today.txt | awk '{print $2}'`
-rm -rf ../temp/today.txt
+#rm -rf ../temp/today.txt
 rm -rf ../temp/nonum.txt
 #echo YEAR=$YEAR
 #echo T_YEAR=$T_YEAR
