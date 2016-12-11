@@ -1,20 +1,23 @@
 #!/bin/bash 
 
-cd /home/zhaocg/source/lottery/AUTO/
+SOURCE=../temp/today2.txt
+DEST=../database/2016.txt
+
+cd ./AUTO/
 source catch.sh
 
-#cat ../temp/today.txt >> ../database/2015.txt
-YEAR=`tail -n 1 ../database/2015.txt | awk '{print $1}'`
-T_YEAR=`tail -n 1 ../temp/today.txt | awk '{print $1}'`
-T_RESULT=`tail -n 1 ../temp/today.txt | awk '{print $2}'`
+YEAR=`tail -n 1 ../database/2016.txt | awk '{print $1}'`
+T_YEAR=`head -n 1 $SOURCE | awk '{print $1}'`
+T_RESULT=`head -n 1 $SOURCE | awk '{print $2}'`
 #rm -rf ../temp/today.txt
 rm -rf ../temp/nonum.txt
-#echo YEAR=$YEAR
-#echo T_YEAR=$T_YEAR
+echo YEAR=$YEAR
+echo T_YEAR=$T_YEAR
+echo T_RESULT=$T_RESULT
 
 if [ "$YEAR" != "$T_YEAR" ]; then
-	cat ../temp/today.txt >> ../database/2015.txt
-	echo "No Equal, write $T_YEAR - $T_RESULT to database"
+	head -n 1 $SOURCE >> ../database/2016.txt
+	echo "No Equal, write $T_YEAR - $T_RESULT to 2016.txt"
 else
 	echo "Equal!"
 fi

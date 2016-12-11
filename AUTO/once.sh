@@ -6,7 +6,7 @@ OUTPUT=../temp/once.txt
 TEMP=../temp/temp.txt
 
 if [ -z $1 ]; then
-	echo ERROR! Usage: ./once.sh [2003 - 2015]
+	echo ERROR! Usage: ./once.sh [2003 - 2016]
 	exit 0
 fi
 
