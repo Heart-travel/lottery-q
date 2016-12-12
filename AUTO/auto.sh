@@ -3,7 +3,7 @@
 SOURCE=../temp/today2.txt
 DEST=../database/2016.txt
 
-cd ./AUTO/
+cd /home/zhaocg/Work/zhaocg/source/lottery/AUTO/
 source catch.sh
 
 YEAR=`tail -n 1 ../database/2016.txt | awk '{print $1}'`
@@ -26,4 +26,4 @@ source nonum.sh
 echo "********************************" >> ../temp/nonum.txt
 echo today: $T_YEAR - $T_RESULT >> ../temp/nonum.txt
 echo "********************************" >> ../temp/nonum.txt
-mail -s "Lottory" zhaocg0422@thundersoft.com < ../temp/nonum.txt
+#mail -s "Lottory" zhaocg0422@thundersoft.com < ../temp/nonum.txt
