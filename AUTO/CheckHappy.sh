@@ -54,7 +54,7 @@ WriteData(){
 	if [ "$YEAR" != "$T_YEAR" ]; then
 		head -n 1 $DEST2 >> $CURRENTDATAFILE
 		echo "No Equal, write $T_YEAR - $T_RESULT to 2016.txt"
-		git add $CURRENTDATAFILE
+		git add $CURRENTDATAFILE $NONUMFILE
 		git commit -m `date "+%Y%m%d"`
 		git push origin master
 	else
