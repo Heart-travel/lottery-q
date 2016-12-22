@@ -10,6 +10,7 @@ DEST2=$TEMPDIR/today2.txt
 CURRENTDATAFILE=$DATADIR/2016.txt
 NONUMFILE=$TEMPDIR/nonum.txt
 OUTPUT=$TEMPDIR/all_time.txt
+COMMITFLAG=0
 
 # **********************************
 # This file is used for catching the data from web and 
@@ -54,9 +55,7 @@ WriteData(){
 	if [ "$YEAR" != "$T_YEAR" ]; then
 		head -n 1 $DEST2 >> $CURRENTDATAFILE
 		echo "No Equal, write $T_YEAR - $T_RESULT to 2016.txt"
-		git add $CURRENTDATAFILE $NONUMFILE
-		git commit -m `date "+%Y%m%d"`
-		git push origin master
+		COMMITFLAG=1
 	else
 		echo "Equal!"
 	fi
@@ -114,6 +113,12 @@ CheckHappy(){
 	grep -nwr A $OUTPUT | awk '{print $1}' | awk 'BEGIN {FS=":"} {print $2}' | tee $NONUMFILE
 }
 
+Commit(){
+	git add $CURRENTDATAFILE $NONUMFILE
+	git commit -m `date "+%Y%m%d"`
+	git push origin master
+}
+
 cd $ROOTDIR/AUTO/
 CatchData;
 WriteData;
@@ -123,5 +128,9 @@ CheckHappy;
 echo "********************************" >> $NONUMFILE
 echo today: $T_YEAR - $T_RESULT >> $NONUMFILE
 echo "********************************" >> $NONUMFILE
+
+if [ "$COMMITFLAG" -eq 1 ];then
+	Commit;
+fi
 #mail -s "Lottory" zhaocg0422@thundersoft.com < ../temp/nonum.txt
 
