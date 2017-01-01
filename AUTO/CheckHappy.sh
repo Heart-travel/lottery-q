@@ -7,7 +7,7 @@ TEMPDIR=$ROOTDIR/temp
 TEMP=$TEMPDIR/3d.xml
 DEST=$TEMPDIR/today.txt
 DEST2=$TEMPDIR/today2.txt
-CURRENTDATAFILE=$DATADIR/2016.txt
+CURRENTDATAFILE=$DATADIR/2017.txt
 NONUMFILE=$TEMPDIR/nonum.txt
 OUTPUT=$TEMPDIR/all_time.txt
 COMMITFLAG=0
@@ -54,7 +54,7 @@ WriteData(){
 	
 	if [ "$YEAR" != "$T_YEAR" ]; then
 		head -n 1 $DEST2 >> $CURRENTDATAFILE
-		echo "No Equal, write $T_YEAR - $T_RESULT to 2016.txt"
+		echo "No Equal, write $T_YEAR - $T_RESULT to 2017.txt"
 		COMMITFLAG=1
 	else
 		echo "Equal!"
